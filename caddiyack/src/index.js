@@ -8,6 +8,7 @@ import MainPage from './Pages/MainPage'
 import HomePage from './Pages/HomePage'
 import AccountPage from './Pages/AccountPage'
 import ChoicePage from './Pages/ChoicePage'
+import ShoppingList from './Pages/ShoppingList'
 import './api';
 
 const Root = () => (
@@ -17,6 +18,7 @@ const Root = () => (
       <Route exact path={'/shops'} component={MainPage}/>
       <Route exact path={'/choice'} component={ChoicePage}/>
       <Route exact path={'/account'} component={AccountPage}/>
+      <Route exact path={'/shopping-list'} component={ShoppingList}/>
     </Switch>
   </Router>
 )

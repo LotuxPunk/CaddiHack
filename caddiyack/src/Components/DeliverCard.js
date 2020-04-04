@@ -7,6 +7,7 @@ import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Avatar from '@material-ui/core/Avatar';
 import { indigo, cyan, deepOrange, deepPurple, grey} from '@material-ui/core/colors';
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles({
     root: {
@@ -47,8 +48,13 @@ const useStyles = makeStyles({
     },
   });
 
-function DeliveryCard(){
+function ListCard(){
     const classes = useStyles();
+    let history = useHistory();
+
+    const handleButtonClick = () => {
+      history.push('/');
+    }
     return(
         <div className='DeliveryCar'>
             <Card className={classes.root}>
@@ -72,11 +78,11 @@ function DeliveryCard(){
                     </div>        
                 </CardContent>
                 <CardActions>
-                    <Button size="small" className={classes.secondary + " " + classes.deliveryBtn}>FAIRE LA LIVRAISON</Button>
+                    <Button size="small" className={classes.secondary + " " + classes.deliveryBtn} onClick={handleButtonClick}>FAIRE LA LIVRAISON</Button>
                 </CardActions>
             </Card>
         </div>
     )
 }
  
-export default DeliveryCard;
+export default ListCard;
