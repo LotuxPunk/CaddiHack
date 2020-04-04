@@ -7,13 +7,15 @@ import * as serviceWorker from './serviceWorker';
 import MainPage from './Pages/MainPage'
 import HomePage from './Pages/HomePage'
 import AccountPage from './Pages/AccountPage'
-
+import ChoicePage from './Pages/ChoicePage'
+import './api';
 
 const Root = () => (
   <Router>
     <Switch>
       <Route exact path={'/'} component={HomePage}/>
       <Route exact path={'/shops'} component={MainPage}/>
+      <Route exact path={'/choice'} component={ChoicePage}/>
       <Route exact path={'/account'} component={AccountPage}/>
     </Switch>
   </Router>
