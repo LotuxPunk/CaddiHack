@@ -43,24 +43,25 @@ const useStyles = makeStyles({
         position: "relative",
         display: "flex",
         fontSize: 18,
-        left: 30,
+        left: 25,
+        width: 190,
     },
     count: {
         marginBottom: 0,
         paddingTop: 15,
-        paddingLeft: 15,
-        paddingRight: 15,
+        width: 59,
+        textAlign: "center",
     },
     removeArticleBox: {
         position: "relative",
-        left: 30,
+        left: 10,
     }
   });
 
 
 function Item(props){
 
-    const [nbItems, setNbItems] = useState(0);
+    const [nbItems, setNbItems] = useState(props.item.count);
 
     function addItem(){
         setNbItems(nbItems + 1);
@@ -68,7 +69,7 @@ function Item(props){
     }
 
     function removeItem(){
-        if(nbItems !== 0){
+        if(nbItems !== 1){
             setNbItems(nbItems - 1);
             props.countChange(props.item, -1);
         }
@@ -81,16 +82,16 @@ function Item(props){
             <Card className={classes.root}>
                 <CardContent>
                     <Typography className={classes.title}>
-                        {props.item.name}
+                        {props.item.label}
                     </Typography>
                 </CardContent>
                 <div className={classes.countBox}>
-                    <Button size="small" className={classes.secondary + " " + classes.itemBtn} onClick={addItem}><Add /></Button>
-                    <p className={classes.count}>{nbItems}</p>
                     <Button size="small" className={classes.secondary + " " + classes.itemBtn} onClick={removeItem}><Remove /></Button>
+                    <p className={classes.count}>{nbItems + " " + props.item.unit}</p>
+                    <Button size="small" className={classes.secondary + " " + classes.itemBtn} onClick={addItem}><Add /></Button>
                 </div>
                 <div className={classes.removeArticleBox}>
-                    <Button size="small" className={classes.secondary + " " + classes.removeBtn} onClick={() => props.removeArticle(props.item.name)}><Clear /></Button>
+                    <Button size="small" className={classes.secondary + " " + classes.removeBtn} onClick={() => props.removeArticle(props.item.label)}><Clear /></Button>
                 </div>
             </Card>
         </div>
