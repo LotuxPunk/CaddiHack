@@ -5,15 +5,15 @@ import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import * as serviceWorker from './serviceWorker';
 import MainPage from './Pages/MainPage'
-import ShopsPages from './Pages/ShopsPages'
+import HomePage from './Pages/HomePage'
 import AccountPage from './Pages/AccountPage'
 
 
 const Root = () => (
   <Router>
     <Switch>
-      <Route exact path={'/'} component={MainPage}/>
-      <Route exact path={'/shops'} component={ShopsPages}/>
+      <Route exact path={'/'} component={HomePage}/>
+      <Route exact path={'/shops'} component={MainPage}/>
       <Route exact path={'/account'} component={AccountPage}/>
     </Switch>
   </Router>
