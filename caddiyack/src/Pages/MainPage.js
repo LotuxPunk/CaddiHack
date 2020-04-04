@@ -13,16 +13,19 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
-import Store from '@material-ui/icons/Store';
+import Shop from '../static/images/shop.svg';
 import withNavbar from '../hoc/withNavbar';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
     root: {
         maxWidth: 345,
     },
     media: {
-        height: 0,
-        paddingTop: '56.25%', // 16:9
+        maxWidth: "100%",
+        marginLeft: "auto",
+        marginRight: "auto",
+        paddingTop: "80%",
     },
     expand: {
         transform: 'rotate(0deg)',
@@ -52,7 +55,7 @@ function MainPage() {
             <Card className={classes.root}>
                 <CardMedia
                     className={classes.media}
-                    image={<Store />}
+                    image={Shop}
                     title="Poireau dish"
                 />
                 <CardHeader
@@ -68,6 +71,9 @@ function MainPage() {
                     subheader="7km"
                 />
                 <CardContent>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                        POIREAUX, HO POIREAUX, LES POIREAUX, ILS SONT SI BEAUX, VENEZ ACHETER MES POIREAUX
+                    </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
                     <IconButton aria-label="add to favorites">
