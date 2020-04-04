@@ -9,6 +9,7 @@ import Done from '@material-ui/icons/Done'
 import { cyan } from '@material-ui/core/colors';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import axios from 'axios';
+import Input from '@material-ui/core/Input';
 
 
 const useStyles = makeStyles({
@@ -20,6 +21,8 @@ const useStyles = makeStyles({
     title: {
         textAlign: "center",
         marginTop: 10,
+        fontSize: 20,
+        width: "100%",
     },
     btnAddItem: {
         float: "right",
@@ -49,6 +52,7 @@ const useStyles = makeStyles({
 
 function ShoppingList(){
 
+    const [listName, setListName] = useState("Ma premiere liste");
     const [totalPrice, setTotalPrice] = useState(0);
     const [shopItems, setShopItems] = useState([]);
     const [items, setItems] = useState([]);
@@ -83,17 +87,14 @@ function ShoppingList(){
         const jsonItem = items.map(item => { return {'item' : item.item, 'quantity' : item.count} })
         const jsonShoppingList = {
             'shopId' : localStorage.getItem("shop"),
-            'listName' : 'Ma toute premiere liste',
+            'listName' : listName,
             'items' : jsonItem
         }
         console.log("My shopping list", JSON.stringify(jsonShoppingList));
-        /*
-        axios.post("https://cyberrubberducks-webapps.azurewebsites.net/api/ShoppingList")
+        axios.post("https://cyberrubberducks-webapps.azurewebsites.net/api/ShoppingList", jsonShoppingList)
         .then(res => {
             console.log(res.data)
-            setShopItems(res.data);
         });
-        */
         localStorage.setItem('article', JSON.stringify(items));
         console.log(JSON.parse(localStorage.getItem("article")));
         setItems([]);
@@ -112,6 +113,10 @@ function ShoppingList(){
             return !items.some(item => item.label === shopItem.label);
         })
     }
+    
+    function listNameChange(e){
+        setListName(e.target.value);
+    }
 
     const classes = useStyles();
     const articles = items.map((item, index) => (<Item key={index} item={item} removeArticle={removeArticle} countChange={countChangeHandler}/>))
@@ -119,7 +124,7 @@ function ShoppingList(){
     const options = getItemsValue();
     return(
         <div className='ShoppingList w-100'>
-            <h2 className={classes.title}>Ma liste de course</h2>
+            <Input className={classes.title} value={listName} onChange={listNameChange}/>
             {articles}
             {
                 displayDropDown ? (<Select className={classes.selectItem}
