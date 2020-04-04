@@ -64,13 +64,13 @@ function Item(props){
 
     function addItem(){
         setNbItems(nbItems + 1);
-        props.countChange(props.name, 1);
+        props.countChange(props.item, 1);
     }
 
     function removeItem(){
         if(nbItems !== 0){
             setNbItems(nbItems - 1);
-            props.countChange(props.name, -1);
+            props.countChange(props.item, -1);
         }
     }
 
@@ -90,7 +90,7 @@ function Item(props){
                     <Button size="small" className={classes.secondary + " " + classes.itemBtn} onClick={removeItem}><Remove /></Button>
                 </div>
                 <div className={classes.removeArticleBox}>
-                    <Button size="small" className={classes.secondary + " " + classes.removeBtn} onClick={() => props.removeArticle(props.name)}><Clear /></Button>
+                    <Button size="small" className={classes.secondary + " " + classes.removeBtn} onClick={() => props.removeArticle(props.item.name)}><Clear /></Button>
                 </div>
             </Card>
         </div>

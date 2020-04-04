@@ -38,6 +38,7 @@ function ShoppingList(){
 
     const [items, setItems] = useState([]);
     const [displayDropDown, setDisplayDropDown] = useState(false);
+    const [info, setInfo] = useState("");
 
     function showItemSelection(){
         setDisplayDropDown(!displayDropDown);
@@ -54,18 +55,18 @@ function ShoppingList(){
 
     function saveList(){
         localStorage.setItem('article', JSON.stringify(items));
+        setItems([]);
+        setDisplayDropDown(false);
+        setInfo("Votre liste à bien été ajouté !");
     }
 
     function countChangeHandler(article, n){
-        //Oui, je sais j'ai pas réfléchit et je vous ****** !
-        const item = items.find(item => item.name === article);
-        const newItem = {"name" : item.name, "count" : item.count + n};
-        const oldItems = items.filter(item => item.name !== article);
-        setItems([...oldItems, newItem])
+        const itemIndex = items.indexOf(article);
+        items[itemIndex].count += n;
     }
 
     const classes = useStyles();
-    const articles = items.map((item) => (<Item item={item} removeArticle={removeArticle} countChange={countChangeHandler}/>))
+    const articles = items.map((item, index) => (<Item key={index} item={item} removeArticle={removeArticle} countChange={countChangeHandler}/>))
     return(
         <div className='ShoppingList w-100'>
             <h2 className={classes.title}>Ma liste de course</h2>
@@ -77,6 +78,7 @@ function ShoppingList(){
                     placeholder="Choissez votre article !"
                 />) : null
             }
+            {}
             <Button size="small" className={classes.btnAddItem} onClick={showItemSelection}>{<Add fontSize="large"/>}Ajouter un produit</Button>
             <Button size="small" className={classes.btnCheck} onClick={saveList}>{<Done fontSize="large"/>}</Button>
         </div>
