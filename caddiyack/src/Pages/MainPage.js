@@ -15,7 +15,6 @@ import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Store from '@material-ui/icons/Store';
 import withNavbar from '../hoc/withNavbar';
-import poireau from '../static/images/poireau.jpg';
 
 const useStyles = makeStyles((theme) => ({
     root: {
