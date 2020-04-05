@@ -2,16 +2,25 @@ import React, { useState, useEffect, Fragment }from 'react';
 import withNavbar from '../hoc/withNavbar';
 import ShoppingCard from '../Components/ShoppingCard';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 function MainPage() {
     const [shops, setShops] = useState([]);
+    let history = useHistory();
 
     useEffect(()=>{
-        axios.get("https://cyberrubberducks-webapps.azurewebsites.net/api/Shop")
-        .then(res => {
-            setShops(res.data);
-        });
-    }, []);
+        if(!localStorage.getItem("token")){
+            history.push("/account");
+        }
+        else{
+            axios.get("https://cyberrubberducks-webapps.azurewebsites.net/api/Shop")
+            .then(res => {
+                setShops(res.data);
+            });
+        }
+
+        
+    },[]);
 
     const cards = shops.map((s, index) => (<ShoppingCard key={index} fav={s.isFavorite} id={s.shopId} name={s.name} description={s.address} image={s.picturePath}/>));
 

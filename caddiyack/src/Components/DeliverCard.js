@@ -53,10 +53,10 @@ function ListCard(){
     let history = useHistory();
 
     const handleButtonClick = () => {
-      history.push('/');
+      history.push('/delivery-list');
     }
     return(
-        <div className='DeliveryCar'>
+        <div className='DeliveryCard'>
             <Card className={classes.root}>
                 <CardContent>
                     <Typography className={classes.title} gutterBottom>

@@ -100,7 +100,7 @@ function ShoppingCard(props){
                     </Typography>
                 </CardContent>
                 <CardActions disableSpacing>
-                    <IconButton color={props.fav? "secondary" : ""} onClick={() => handleFavClick()} aria-label="add to favorites">
+                    <IconButton color={isFav? "secondary" : ""} onClick={() => handleFavClick()} aria-label="add to favorites">
                         <FavoriteIcon />
                     </IconButton>
                     <IconButton
@@ -116,7 +116,7 @@ function ShoppingCard(props){
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent className={classes.mapBox}>
-                        <Map />
+                        <Map location={[50.464006, 4.843308]} area={40}/>
                     </CardContent>
                 </Collapse>
             </Card>

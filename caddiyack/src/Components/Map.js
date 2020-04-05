@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }));
 
-function Map(){
+function Map(props){
 
     const classes = useStyles();
 
@@ -22,7 +22,7 @@ function Map(){
         L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         }).addTo(mymap);
-        L.circle([50.464006, 4.843308]).addTo(mymap);
+        L.circle(props.location, props.area).addTo(mymap);
     }, []);
 
     return (

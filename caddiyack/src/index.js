@@ -9,6 +9,7 @@ import HomePage from './Pages/HomePage'
 import AccountPage from './Pages/AccountPage'
 import ChoicePage from './Pages/ChoicePage'
 import ShoppingList from './Pages/ShoppingList'
+import DeliveriesPage from './Pages/DeliveriesPage'
 import './api';
 
 const Root = () => (
@@ -19,6 +20,7 @@ const Root = () => (
       <Route exact path={'/choice'} component={ChoicePage}/>
       <Route exact path={'/account'} component={AccountPage}/>
       <Route exact path={'/shopping-list'} component={ShoppingList}/>
+      <Route exact path={'/delivery-list'} component={DeliveriesPage} />
     </Switch>
   </Router>
 )
