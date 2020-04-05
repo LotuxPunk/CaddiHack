@@ -6,7 +6,7 @@ const withNavbar = WrappedComponent => (
         render(){
             return (
                 <Fragment>
-                    <div id="main" className="container-fluid">
+                    <div id="main" className="container-fluid pb-5">
                         <WrappedComponent/>
                     </div>
                     <Navbar/>

@@ -99,7 +99,7 @@ export default function ListDeliveryCard() {
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent className={classes.mapBox}>
                         <p className={classes.info}>Nicodème vous attends ici !</p>
-                        <Map location={[50.463719,4.846368]} area={15} />
+                        <Map location={[50.293963,5.096994]} area={15} />
                         <p className={classes.info}>La liste de Nicodème</p>
                         {articles}
                     </CardContent>

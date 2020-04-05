@@ -84,7 +84,7 @@ function ShoppingCard(props){
                 
                 <CardHeader
                     avatar={
-                        <Avatar aria-label="recipe" className={classes.avatar}>T</Avatar>
+                        <Avatar aria-label="recipe" className={classes.avatar}>C</Avatar>
                     }
                     action={
                         <IconButton aria-label="settings">
@@ -116,7 +116,7 @@ function ShoppingCard(props){
                 </CardActions>
                 <Collapse in={expanded} timeout="auto" unmountOnExit>
                     <CardContent className={classes.mapBox}>
-                        <Map location={[50.464006, 4.843308]} area={40}/>
+                        <Map location={[50.294021,5.098466]} area={40}/>
                     </CardContent>
                 </Collapse>
             </Card>
