@@ -17,6 +17,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Map from './Map';
 import ItemCard from './ItemCard';
+import axios from 'axios';
 
 const items = [{"item":2,"label":"Test2","unit":"l","price":10.3,"count":5},{"item":5,"label":"Test5","unit":"boite","price":8,"count":8},{"item":4,"label":"Test4","unit":"kg","price":100,"count":9}]
 
@@ -34,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
     },
     expand: {
         position: "relative",
-        left: 100,
+        left: 80,
         transform: 'rotate(0deg)',
         marginLeft: 'auto',
         transition: theme.transitions.create('transform', {
@@ -59,13 +60,21 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-export default function ListDeliveryCard() {
+export default function ListDeliveryCard(props) {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
+    let history = useHistory();
 
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
+
+    const handlePickList = () => {
+        axios.put("https://cyberrubberducks-webapps.azurewebsites.net/api/ShoppingList/"+props.id)
+        .then(res =>{
+            history.push("/");
+        });
+    }
     
     
     const articles = items.map(item => <ItemCard item={item} />)
@@ -79,12 +88,12 @@ export default function ListDeliveryCard() {
                     </div>
                     <div className='description'>
                         <Typography>
-                          Prenez en charge la liste de Nicodème !
+                            Prenez en charge la liste de {props.owner} !
                         </Typography>	
                       </div>        
                 </CardContent>
                 <CardActions>
-                    <Button size="small" className={classes.secondary + " " + classes.deliveryBtn}><CheckBoxIcon/> FAIRE LA LIVRAISON</Button>
+                    <Button size="small" onClick={()=> handlePickList(props.id)} className={classes.secondary + " " + classes.deliveryBtn}><CheckBoxIcon/> FAIRE LA LIVRAISON</Button>
                     <IconButton
                         className={clsx(classes.expand, {
                             [classes.expandOpen]: expanded,

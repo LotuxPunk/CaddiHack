@@ -18,8 +18,6 @@ function MainPage() {
                 setShops(res.data);
             });
         }
-
-        
     },[]);
 
     const cards = shops.map((s, index) => (<ShoppingCard key={index} fav={s.isFavorite} id={s.shopId} name={s.name} description={s.address} image={s.picturePath}/>));

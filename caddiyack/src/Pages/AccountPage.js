@@ -22,7 +22,7 @@ function AccountPage() {
     return (
         <div className="container-fluid pt-3">
             <h1>{localStorage.getItem("firstName")}</h1>
-            <Avatar alt={localStorage.getItem("firstName")} className="position-fixed" style={{right:40, top:25}}>{localStorage.getItem("firstName").charAt(0)}</Avatar>
+            <Avatar alt={localStorage.getItem("firstName")} className="position-fixed" style={{right:40, top:25}}>{localStorage.getItem("name").charAt(0)}</Avatar>
             <Button onClick={() => handleClick()} className="mx-auto text-danger">Se déconnecter</Button>
         </div>
     )
