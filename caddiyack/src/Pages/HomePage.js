@@ -1,9 +1,22 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import withNavbar from '../hoc/withNavbar';
 import { Avatar } from '@material-ui/core';
 import logo from '../images/logo-caddiyack-tiny.png';
+import axios from 'axios';
 
 function HomePage() {
+
+    useEffect(()=>{
+        if(localStorage.getItem("token")){
+            axios.get("https://cyberrubberducks-webapps.azurewebsites.net/api/Favorite/myFavorites")
+            .then(res => {
+                console.log(res.data);
+            });
+        }
+    }, []);
+        
+
+
     return (
         <div className="container-fluid mt-3">
             <h1>Bonjour</h1>

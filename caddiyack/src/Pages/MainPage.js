@@ -1,4 +1,4 @@
-import React, { useState, useEffect }from 'react';
+import React, { useState, useEffect, Fragment }from 'react';
 import withNavbar from '../hoc/withNavbar';
 import ShoppingCard from '../Components/ShoppingCard';
 import axios from 'axios';
@@ -13,12 +13,16 @@ function MainPage() {
         });
     }, []);
 
-    const cards = shops.map((s, index) => (<ShoppingCard key={index} id={s.shopId} name={s.name} description={s.address} image={s.picturePath}/>));
+    const cards = shops.map((s, index) => (<ShoppingCard key={index} fav={s.isFavorite} id={s.shopId} name={s.name} description={s.address} image={s.picturePath}/>));
 
     return (
-        <div className="MainPage col-12 mx-auto mt-4">
-            {cards}
+        <div className="container-fluid pt-3">
+            <h1>Magasins</h1>
+            <div className="MainPage col-12 mx-auto mt-4">
+                {cards}
+            </div>
         </div>
+        
     );
 }
 
